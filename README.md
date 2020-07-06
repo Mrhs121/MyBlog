@@ -11,6 +11,8 @@ fork from [My Blog](https://github.com/ZHENFENG13/My-Blog) , 该作者是在 [Ta
 
 ### 注意：各位同学使用我的博客的时候记得把logo改掉。。。还有记得把lovestory页面删掉。。。。。（狗粮
 
+在线效果：[我的博客](http://hslovelal.top/)
+
 喜欢该项目的话，可以给项目点个 star，如果你想在这基础上修改，那么建议你 fork 该项目，然后再修改哦。
 ## 新增功能如下：
 

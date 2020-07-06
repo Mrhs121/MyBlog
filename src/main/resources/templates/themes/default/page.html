@@ -1,0 +1,36 @@
+<!-- 自定义页面 由三部分组成 1：页面内容主题 2：评论 3：导航栏 -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="themes/default/header::header(${article.title},null)"></div>
+<body>
+
+<article class="main-content post-page">
+    <div class="post-header">
+        <h1 class="post-title" itemprop="name headline" th:text="${article.title}"></h1>
+        <div class="post-data">
+            <time th:datetime="${commons.fmtdate(article.created)}" itemprop="datePublished" th:text="'发布于 '+ ${commons.fmtdate(article.created)}"></time>
+        </div>
+    </div>
+    <div id="post-content" class="post-content" th:utext="${commons.article(article.content)}"></div>
+</article>
+
+<div th:replace="themes/default/comments::comments"></div>
+<div th:replace="themes/default/footer::footer"></div>
+<script type="text/x-mathjax-config">
+    /*<![CDATA[*/
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+       /*]]>*/
+</script>
+<script th:src="@{//cdn.mathjax.org/mathjax/latest/MathJax.js}" > </script>
+
+</body>
+</html>

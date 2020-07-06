@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--<head>-->
+<!--    <meta charset="utf-8"/>-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="renderer" content="webkit" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />&ndash;&gt;-->
+<!--    <title>黄先生和爱莉宝宝的恋爱故事</title>-->
+<!--    <link href="@{/user/css/love.css}" rel="stylesheet"/>-->
+<!--</head>-->
+
+<div th:replace="themes/default/loveheader::header('我和她的恋爱',null)"></div>
+
+<style type="text/css">
+    /*body {*/
+    /*    background: white;*/
+    /*    overflow: hidden;*/
+    /*    margin: 0;*/
+    /*}*/
+
+    /*h1{*/
+    /*    position: fixed;*/
+    /*    top: 25%;*/
+    /*    left: 0;*/
+    /*    width: 100%;*/
+    /*    text-align: center;*/
+    /*    transform:translateY(-50%);*/
+    /*    font-family: 'Love Ya Like A Sister', cursive;*/
+    /*    !*font-size: 40px;*!*/
+    /*    !*color: #c70012;*!*/
+    /*    padding: 0 20px;*/
+
+    /*    background-image: -webkit-linear-gradient(left, rgba(246, 139, 199, 0.96), #e60078 25%, #96002f 50%, #e60200 75%, #147B96);*/
+    /*    -webkit-text-fill-color: transparent;*/
+    /*    -webkit-background-clip: text;*/
+    /*    -webkit-background-size: 200% 100%;*/
+    /*    -webkit-animation:  maskedAnimation 4s infinite linear;*/
+    /*    font-size: 300%;*/
+    /*    font-weight: 800;*/
+    /*}*/
+    /*h2{*/
+    /*    position: fixed;*/
+    /*    top: 10%;*/
+    /*    left: 0;*/
+    /*    width: 100%;*/
+    /*    text-align: center;*/
+    /*    transform:translateY(-50%);*/
+    /*    font-family: 'Love Ya Like A Sister', cursive;*/
+    /*    font-size: 20px;*/
+    /*    color: #c70012;*/
+    /*    padding: 0 20px;*/
+    /*}*/
+    /*@media (min-width:1200px){*/
+    /*    h1{*/
+    /*        font-size: 60px;*/
+    /*    }*/
+    /*}*/
+
+    /* 心形按钮 */
+    .liker {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+    .liker span {
+        position: absolute;
+        font-family: monospace;
+        color: #F92A82;
+        bottom: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .btn {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        position: absolute;
+        cursor: pointer;
+        left: 50%;
+        transform: translate(-50%, -10%);
+        background-color: #FF4D80;
+        color: #fff;
+        outline: none;
+        transition: 0.3s ease;
+        box-shadow: 0 3px 10px #F92A82;
+    }
+    .btn svg {
+        fill: #fff;
+    }
+    .btn:hover {
+        background-color: #F92A82;
+    }
+
+    .heart {
+        margin: 100px auto;
+        width: 200px;
+        height: 200px;
+        /* border: 1px solid #0094ff; */
+        position: relative;
+        animation-name: shake;
+        animation-duration: .5s;
+        animation-iteration-count: infinite;
+    }
+
+    .heart div {
+        /* border: 1px solid #0094ff; */
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        /*background: pink;*/
+        background: #FF3333;
+        animation-name: shadow;
+        animation-duration: .5s;
+        animation-iteration-count: infinite;
+    }
+
+    .topLeft,
+    .topRight {
+        border-radius: 100px 100px 0 0;
+    }
+
+    .topLeft {
+        transform: translate(-50px, 0) rotate(-45deg);
+    }
+
+    .topRight {
+        transform: translate(50px, 0) rotate(45deg);
+    }
+
+    .bottom {
+        transform: translate(0, 64px) rotate(45deg) scale(.9, .9);
+    }
+    /* 定义动画 */
+
+    @keyframes shake {
+        from {
+            transform: scale(.9, .9);
+        }
+        to {
+            transform: scale(1.1, 1.1);
+        }
+    }
+
+    @keyframes shadow {
+        from {}
+        to {
+            box-shadow: 0px 0px 50px #FF3333;
+        }
+    }
+
+    .this-div{
+
+        /*position: fixed;*/
+        /*top: 25%;*/
+        /*left: 0;*/
+        /*width: 100%;*/
+        /*text-align: center;*/
+        /*transform:translateY(-50%);*/
+        /*font-family: 'Love Ya Like A Sister', cursive;*/
+        /*padding: 0 20px;*/
+        background-image: -webkit-linear-gradient(left, rgba(150, 0, 44, 0.96), #e60078 25%, #96007b 20%, #e66b00 75%, #147B96);
+
+        background-image: -webkit-linear-gradient(left, rgb(228, 255, 0), #e6d800 25%, #967b00 50%, #e67600 75%, #147B96);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation:  maskedAnimation 4s infinite linear;
+        font-size: 220%;
+        font-family: 'Love Ya Like A Sister', cursive;
+        font-weight: 800;
+    }
+
+    @keyframes maskedAnimation {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -100% 0;
+        }
+    }
+</style>
+
+
+
+
+<body>
+
+
+
+<!--<article class="main-content post-page">-->
+
+
+<!--    <canvas width="100%" height="100%"></canvas>-->
+<!--    <canvas id="c" width="100%" height="100%"></canvas>-->
+
+    <div class="lovecontent">
+
+
+
+        <div class="this-div">
+            我和她一起走过了
+        </div>
+
+        <div class="timer">
+            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+        </div>
+        <h2>从2014年6月24日->至今</h2>
+
+        <div class="heart">
+            <div class='topLeft'></div>
+            <div class='topRight'></div>
+            <div class='bottom'></div>
+        </div>
+<!--autoplay="autoplay" -->
+<!--        <audio id='audio' loop="loop"  >-->
+<!--            <source src="love.mp3" />-->
+<!--        </audio>-->
+
+
+
+<!--        <iframe src="./love.mp3" allow="autoplay" style="display: none"></iframe>-->
+<!--        <audio id="back_music" src="./love.mp3" autoplay="autoplay" loop="loop"></audio>-->
+<!--        <button id='status' onclick='triggerBgMusic()'>播放按钮</button>-->
+
+<!--        <div class="liker">-->
+<!--            <canvas class="hearts-canvas"></canvas>-->
+<!--            <button class="btn">-->
+<!--                <svg width="24" height="24" viewBox="0 0 24 24">-->
+<!--                    <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>-->
+<!--                </svg>-->
+<!--            </button>-->
+<!--        </div>-->
+
+<!--        <script src="./index.js"></script>-->
+    </div>
+
+
+<!--    http://www.ytmp3.cn/down/35252.mp3-->
+<!--    <audio id='audio' src='http://go.163.com/2018/0209/mengniu/audio/bgm.mp3' loop="loop" autoplay="autoplay" ></audio>-->
+
+<!--</article>-->
+
+
+<!--<script>-->
+<!--    /*<![CDATA[*/-->
+<!--    var b = document.body;-->
+<!--    var c = document.getElementsByTagName('canvas')[0];-->
+<!--    var a = c.getContext('2d');-->
+<!--    /*]]>*/-->
+<!--</script>-->
+
+<!--<script>-->
+<!--    /*<![CDATA[*/-->
+<!--    eval('var M=Math,n=M.pow,i,E=2,F="rgba(233,61,109,",d=M.cos,z=M.sin,L=1,u=30,W=window,w=c.width=W.innerWidth,h=c.height=W.innerHeight,r=_1){return M.random()*2-1},y="px Arial",v="♥",q="♥",X=w/2,Y=h/2,T=4,p=_1){var e=this;e.g=_1){e.x=X;e.y=Y;e.k=0;e.l=0;e.t=M.random()*19000;e.c=e.t};e.d=_1){a.fillStyle=F+(e.c/e.t)+")";a.fillText(q,e.x,e.y);e.c-=50;e.x+=e.k;e.y+=e.l;e.k=e.k+r();e.l=e.l+r();if(e.c<0||e.x>w||e.x<0||e.y>h||e.y<0){e.g()}};e.g()},A,B;a.textAlign="center";a.strokeStyle="#000";a.lineWidth=2;for(i=0;i<350;i++){M[i]=new p()}setInterval(_1){a.clearRect(0,0,w,h);a.font=u+y;X=(w/6*n(z(T),3)+w/2);Y=0.8*(-h/40*(13*d(T)-5*d(2*T)-2*d(3*T)-d(4*T))+h/2.3);T+=(z(T)+3)/99;for(i=0;i<350;i++){with(M[i]){A=(x/w-0.5)*2,B=-(y/h-0.5);if(L&&(A*A+2*n((B-0.5*n(M.abs(A),0.5)),2))>0.11){k=l=0}d()}}a.font=120+y;if(E>0.1){if(E<1){a.fillStyle=F+E+")";a.fillText("Click",w/2,h/2)}E-=0.02}a.fillStyle="#E93D6D";a.fillText(v,X,Y+u);a.strokeText(v,X,Y+u)},50);b.bgColor="#FFEFF2";c.onmouseup=_1){L=(L)?0:1}'.replace(/(_1)/g,'function('))-->
+<!--    /*]]>*/-->
+<!--</script>-->
+
+
+
+
+
+<!--<script>-->
+<!--    /*<![CDATA[*/-->
+<!--    //&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;页面初始化&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    var audio = document.getElementById('audio');-->
+<!--    if(sessionStorage.bgmusic=='pause'){-->
+<!--        playBgMusic(false);-->
+<!--    }else{-->
+<!--        playBgMusic(true);-->
+<!--        //&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;处理自动播放&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--        //&#45;&#45;创建页面监听，等待微信端页面加载完毕 触发音频播放-->
+<!--        document.addEventListener('DOMContentLoaded', function () {-->
+<!--            function audioAutoPlay() {-->
+<!--                playBgMusic(true);-->
+<!--                document.addEventListener("WeixinJSBridgeReady", function () {-->
+<!--                    playBgMusic(true);-->
+<!--                }, false);-->
+<!--            }-->
+<!--            audioAutoPlay();-->
+<!--        });-->
+<!--        //&#45;&#45;创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放-->
+<!--        function audioAutoPlay() {-->
+<!--            playBgMusic(true);-->
+<!--            document.removeEventListener('touchstart',audioAutoPlay);-->
+<!--        }-->
+<!--        document.addEventListener('touchstart', audioAutoPlay);-->
+<!--    }-->
+<!--    //&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;处理页面激活&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    var hiddenProperty = 'hidden' in document ? 'hidden' :-->
+<!--        'webkitHidden' in document ? 'webkitHidden' :-->
+<!--            'mozHidden' in document ? 'mozHidden' :-->
+<!--                null;-->
+<!--    var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');-->
+<!--    var onVisibilityChange = function(){-->
+<!--        if (!document[hiddenProperty]) {-->
+<!--            if(!sessionStorage.bgmusic||sessionStorage.bgmusic=='play'){-->
+<!--                audio.play();-->
+<!--            }-->
+<!--        }else{-->
+<!--            audio.pause();-->
+<!--        }-->
+<!--    }-->
+<!--    document.addEventListener(visibilityChangeEvent, onVisibilityChange);-->
+<!--    //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;背景音乐开关&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    function triggerBgMusic(){-->
+<!--        if(!sessionStorage.bgmusic||sessionStorage.bgmusic=='play'){-->
+<!--            playBgMusic(false);-->
+<!--        }else{-->
+<!--            playBgMusic(true);-->
+<!--        }-->
+<!--    }-->
+<!--    //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;音乐播放和暂停&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    function playBgMusic(val){-->
+<!--        if(val){-->
+<!--            audio.play();-->
+<!--            sessionStorage.bgmusic='play';-->
+<!--            document.getElementById('status').innerHTML='正在播放';-->
+<!--        }else{-->
+<!--            audio.pause();-->
+<!--            sessionStorage.bgmusic='pause';-->
+<!--            document.getElementById('status').innerHTML='停止播放了';-->
+<!--        }-->
+<!--    }-->
+<!--    /*]]>*/-->
+<!--</script>-->
+
+<script>
+    /*<![CDATA[*/
+    function timer() {
+        var start = new Date(2014, 6, 24); // 2015.7.2
+        var t = new Date() - start;
+        var h = ~~(t / 1000 / 60 / 60 % 24);
+        if (h < 10) {
+            h = "0" + h;
+        }
+        var m = ~~(t / 1000 / 60 % 60);
+        if (m < 10) {
+            m = "0" + m;
+        }
+
+        var s = ~~(t / 1000 % 60);
+        if (s < 10) {
+            s = "0" + s;
+        }
+        document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24)+30;
+        document.getElementById('h').innerHTML = h;
+        document.getElementById('m').innerHTML = m;
+        document.getElementById('s').innerHTML = s;
+    }
+    timer();
+    setInterval(timer, 1000);
+    /*]]>*/
+</script>
+
+
+
+
+<!--<script>-->
+<!--    /*<![CDATA[*/-->
+<!--    function play() {-->
+<!--        console.log("========> play");-->
+<!--        // 音频文件-->
+<!--        var src = "love.mp3";-->
+<!--        // 初始化Aduio-->
+<!--        var audio = new Audio();-->
+
+<!--        var playPromise;-->
+
+<!--        audio.src = src;-->
+
+<!--        playPromise = audio.play();-->
+
+<!--        if (playPromise) {-->
+<!--            playPromise.then(() => {-->
+<!--                // 音频加载成功-->
+<!--                // 音频的播放需要耗时-->
+<!--                setTimeout(() => {-->
+<!--                // 后续操作-->
+<!--                console.log("done.");-->
+<!--        }, audio.duration * 1000); // audio.duration 为音频的时长单位为秒-->
+
+
+<!--        }).catch((e) => {-->
+<!--                // 音频加载失败-->
+<!--                console.log("加载音频失败："+e);-->
+<!--            });-->
+<!--        }-->
+<!--    }-->
+<!--    play();-->
+
+<!--    /*]]>*/-->
+<!--</script>-->
+
+
+<!--<script>-->
+<!--    /*<![CDATA[*/-->
+<!--    var canvas = document.querySelector("canvas"),-->
+<!--        ctx = canvas.getContext("2d");-->
+
+<!--    var ww,wh;-->
+
+<!--    function onResize(){-->
+<!--        ww = canvas.width = window.innerWidth;-->
+<!--        wh = canvas.height = window.innerHeight;-->
+<!--    }-->
+
+<!--    ctx.strokeStyle = "red";-->
+<!--    ctx.shadowBlur = 25;-->
+<!--    ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";-->
+
+<!--    var precision = 100;-->
+<!--    var hearts = [];-->
+<!--    var mouseMoved = false;-->
+<!--    function onMove(e){-->
+<!--        mouseMoved = true;-->
+<!--        if(e.type === "touchmove"){-->
+<!--            hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));-->
+<!--            hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));-->
+<!--        }-->
+<!--        else{-->
+<!--            hearts.push(new Heart(e.clientX, e.clientY));-->
+<!--            hearts.push(new Heart(e.clientX, e.clientY));-->
+<!--        }-->
+<!--    }-->
+
+<!--    var Heart = function(x,y){-->
+<!--        this.x = x || Math.random()*ww;-->
+<!--        this.y = y || Math.random()*wh;-->
+<!--        this.size = Math.random()*2 + 1;-->
+<!--        this.shadowBlur = Math.random() * 10;-->
+<!--        this.speedX = (Math.random()+0.2-0.6) * 8;-->
+<!--        this.speedY = (Math.random()+0.2-0.6) * 8;-->
+<!--        this.speedSize = Math.random()*0.05 + 0.01;-->
+<!--        this.opacity = 1;-->
+<!--        this.vertices = [];-->
+<!--        for (var i = 0; i < precision; i++) {-->
+<!--            var step = (i / precision - 0.5) * (Math.PI * 2);-->
+<!--            var vector = {-->
+<!--                x : (15 * Math.pow(Math.sin(step), 3)),-->
+<!--                y : -(13 * Math.cos(step) - 5 * Math.cos(2 * step) - 2 * Math.cos(3 * step) - Math.cos(4 * step))-->
+<!--            }-->
+<!--            this.vertices.push(vector);-->
+<!--        }-->
+<!--    }-->
+
+<!--    Heart.prototype.draw = function(){-->
+<!--        this.size -= this.speedSize;-->
+<!--        this.x += this.speedX;-->
+<!--        this.y += this.speedY;-->
+<!--        ctx.save();-->
+<!--        ctx.translate(-1000,this.y);-->
+<!--        ctx.scale(this.size, this.size);-->
+<!--        ctx.beginPath();-->
+<!--        for (var i = 0; i < precision; i++) {-->
+<!--            var vector = this.vertices[i];-->
+<!--            ctx.lineTo(vector.x, vector.y);-->
+<!--        }-->
+<!--        ctx.globalAlpha = this.size;-->
+<!--        ctx.shadowBlur = Math.round((3 - this.size) * 10);-->
+<!--        ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";-->
+<!--        ctx.shadowOffsetX = this.x + 1000;-->
+<!--        ctx.globalCompositeOperation = "screen"-->
+<!--        ctx.closePath();-->
+<!--        ctx.fill()-->
+<!--        ctx.restore();-->
+<!--    };-->
+
+
+<!--    function render(a){-->
+<!--        requestAnimationFrame(render);-->
+
+<!--        hearts.push(new Heart())-->
+<!--        ctx.clearRect(0,0,ww,wh);-->
+<!--        for (var i = 0; i < hearts.length; i++) {-->
+<!--            hearts[i].draw();-->
+<!--            if(hearts[i].size <= 0){-->
+<!--                hearts.splice(i,1);-->
+<!--                i&#45;&#45;;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+
+
+<!--    onResize();-->
+<!--    window.addEventListener("mousemove", onMove);-->
+<!--    window.addEventListener("touchmove", onMove);-->
+<!--    window.addEventListener("resize", onResize);-->
+<!--    requestAnimationFrame(render);-->
+<!--    /*]]>*/-->
+<!--</script>-->
+
+</body>
+
+</html>

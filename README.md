@@ -1,10 +1,10 @@
-## Blog
+## MyBlog
 
 fork from [My Blog](https://github.com/ZHENFENG13/My-Blog) , 该作者是在 [Tale](https://github.com/otale/tale) 博客系统基础上进行修改的。
 
 `Tale` 使用了轻量级 mvc 框架 `Blade` 开发，默认主题使用了漂亮的 `pinghsu` 。
 
-`My-Blog` 使用的是 Docker + SpringBoot + Mybatis + thymeleaf 打造的一个个人博客模板。
+`MyBlog` 使用的是 SpringBoot + thymeleaf + JPA 打造的一个个人博客模板。
 ```
 我在原作者的基础上改进了markdown和文章目录的显示，增加了latex 数学公式的支持，添加了文章归档
 修改了原来的一些 bug，并在原作者的项目中提出了 issue ， 原作者已修复。

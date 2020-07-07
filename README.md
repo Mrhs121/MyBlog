@@ -18,6 +18,7 @@ fork from [My Blog](https://github.com/ZHENFENG13/My-Blog) , 该作者是在 [Ta
 * 添加置顶博客选项
 * 回收站
 * 定时发布
+* 隐藏博客
 
 喜欢该项目的话，可以给项目点个 star，如果你想在这基础上修改，那么建议你 fork 该项目，然后再修改哦。
 ## 新增功能如下：

@@ -27,9 +27,27 @@
     <script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<!--    <style>-->
+<!--        :root {-->
+<!--            &#45;&#45;accent: #3493d1;-->
+<!--            &#45;&#45;main: #f3f3f3;-->
+<!--            &#45;&#45;light: #ececec;-->
+<!--            &#45;&#45;lighter: #666666;-->
+<!--            &#45;&#45;border: #e6e6e6;-->
+<!--            &#45;&#45;bg: #333333;-->
+<!--        }-->
+<!--        html,-->
+<!--        body {-->
+<!--            background-color: var(&#45;&#45;bg);-->
+<!--        }-->
+<!--        p {-->
+<!--            color: var(&#45;&#45;main);-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body  gtools_scp_screen_capture_injected="true" th:class="${is_post}?'':'bg-grey'">
+
 
 
 <!--[if lt IE 8]>
@@ -94,6 +112,48 @@
 <!--    "HTML-CSS": { availableFonts: ["TeX"] }-->
 <!--  });-->
 <!--       /*]]>*/-->
+<!--</script>-->
+<!--<script th:inline="javascript">-->
+<!--    /*<![CDATA[*/-->
+<!--    let theme = "dark";-->
+<!--    /**-->
+<!--     * 添加暗色主题-->
+<!--     */-->
+<!--    console.log("切换暗黑模式")-->
+<!--    function addDarkTheme() {-->
+<!--        const link = document.createElement("link");-->
+<!--        link.id = "theme-css-dark"; // 加上id方便后面好查找到进行删除-->
+<!--        link.rel = "stylesheet";-->
+<!--        link.type = "text/css";-->
+<!--        link.href = "./styles.css";-->
+<!--        document.querySelector("head").appendChild(link);-->
+<!--    }-->
+<!--    const link = document.createElement("link");-->
+<!--    link.id = "theme-css-dark"; // 加上id方便后面好查找到进行删除-->
+<!--    link.rel = "stylesheet";-->
+<!--    link.type = "text/css";-->
+<!--    link.href = "/user/css/love.css";-->
+<!--    document.querySelector("head").appendChild(link);-->
+
+<!--    /**-->
+<!--     * 移除暗色主题-->
+<!--     */-->
+<!--    function removeDarkTheme() {-->
+<!--        document.querySelector("#theme-css-dark").remove();-->
+<!--    }-->
+<!--    /**-->
+<!--     * 切换主题-->
+<!--     */-->
+<!--    const changeTheme = () => {-->
+<!--        if (theme === "light") {-->
+<!--            addDarkTheme();-->
+<!--            theme = "dark";-->
+<!--        } else {-->
+<!--            removeDarkTheme();-->
+<!--            theme = "light";-->
+<!--        }-->
+<!--    };-->
+<!--           /*]]>*/-->
 <!--</script>-->
 
 

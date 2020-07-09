@@ -186,6 +186,96 @@
             background-position: -100% 0;
         }
     }
+    .hearttext{
+        animation:  scaleDraw 1s ease-in-out infinite;
+        font-size: 50px;
+        font-family: 'Love Ya Like A Sister', cursive;
+        font-weight: 800;
+    }
+    @keyframes scaleDraw {
+        0% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(1.4);
+        }
+        50% {
+            transform: scale(1);
+        }
+        75% {
+            transform: scale(1);
+        }
+
+
+    }
+
+    .douyingtext{
+        animation:  uk-text-shadow-glitch .65s cubic-bezier(1,-1.91,0,2.79) 0s infinite;
+        /*font-size: 220%;*/
+        /*font-family: 'Love Ya Like A Sister', cursive;*/
+        /*font-weight: 800;*/
+    }
+    @keyframes uk-text-shadow-glitch {
+        0% {
+            text-shadow: none;
+        }
+        25% {
+            text-shadow: -2px -2px 0 #ff0048, 2px 2px 0 #3234ff;
+        }
+        50% {
+            text-shadow: 2px 2px 0  0 #ff0048, -2px -2px 0 #3234ff;
+        }
+        75% {
+            text-shadow: -2px -2px 0 #ff0048, 2px 2px 0 #3234ff;
+        }
+        100% {
+            text-shadow: 2px 2px 0  0 #ff0048, -2px -2px 0 #3234ff;
+        }
+    }
+    @keyframes uk-flicker  {
+        0%{
+            opacity: 0;
+        }
+        10%{
+            opacity: .6;
+            transform: scale(.8);
+        }
+        20%{
+            opacity: 0;
+        }
+        40%{
+            opacity: 1;
+        }
+        50%{
+            opacity: .2;
+            transform: scale(1.1);
+        }
+        100%{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .huxi{
+        font-size:50px;
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #FF512F;
+        font-weight: 900;
+        text-shadow: 0px 0px 7px #ffd800;
+        background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
+        animation: glow-animation 4s infinite linear;
+        color: #FFC0CB;
+        box-sizing: border-box;
+        vertical-align: inherit;
+    }
+    @keyframes glow-animation{
+        0%{filter:hue-rotate(-360deg)}
+        100%{filter:hue-rotate(360deg)}
+    }
+
+
 </style>
 
 
@@ -205,14 +295,16 @@
 
 
 
-        <div class="this-div">
-            我和她一起走过了
-        </div>
+<!--        <div class="this-div">-->
+        <div class="hearttext" >我和她一起走过了</div>
+<!--        </div>-->
 
-        <div class="timer">
-            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+        <div class="this-div">
+<!--            <span class="huxi" style="font-size:30px;     background-image: linear-gradient(90deg, #d95a5a 0%, #e72ca2 100%, #fff);">-->
+                <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+<!--            </span>-->
         </div>
-        <h2>从2014年6月24日->至今</h2>
+        <span class="huxi" style="font-size:25px;" >2014年6月24日 to 一生</span>
 
         <div class="heart">
             <div class='topLeft'></div>

@@ -1,3 +1,11 @@
+:root {
+    --accent: #3493d1;
+    --main: #f3f3f3;
+    --light: #ececec;
+    --lighter: #666666;
+    --border: #e6e6e6;
+    --bg: #333333;
+}
 
 .lovebody {
     -webkit-font-smoothing: antialiased;

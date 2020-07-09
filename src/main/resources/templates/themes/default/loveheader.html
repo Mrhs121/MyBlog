@@ -40,6 +40,8 @@
             <img th:src="@{/user/img/logo.jpg}" alt="首页"/>
         </a>
         <div class="navbar-menu">
+
+            <a th:href="${commons.site_url('/categorise')}">分类</a>
             <a th:href="${commons.site_url('/archives')}">归档</a>
             <a th:href="${commons.site_url('/friends')}">好友</a>
             <a th:href="${commons.site_url('/about')}">关于</a>
@@ -60,6 +62,7 @@
         <div class="navbar-mobile-menu" onclick="">
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>
+                <li><a th:href="${commons.site_url('/categorise')}">分类</a></li>
                 <li><a th:href="${commons.site_url('/archives')}">归档</a></li>
                 <li><a th:href="${commons.site_url('/friends')}">好友</a></li>
                 <li><a th:href="${commons.site_url('/about')}">关于</a></li>
